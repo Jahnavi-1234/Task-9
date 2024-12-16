@@ -2,10 +2,13 @@
 
 class FibonacciIterator:
     def __init__(self, max_count):
-        self.max_count = max_count  # Total numbers to generate
-        self.prev = 0  # First number in the sequence
-        self.curr = 1  # Second number in the sequence
-        self.count = 0  # Counter to keep track of how many numbers have been generated
+        # Total numbers to generate
+        self.max_count = max_count  
+        # First number in the sequence
+        self.prev = 0  
+        self.curr = 1  
+        # Counter to keep track of how many numbers have been generated
+        self.count = 0  
     def __iter__(self):
         return self
     def __next__(self):
@@ -14,10 +17,14 @@ class FibonacciIterator:
 
         # Return the current number and move to the next
         result = self.prev
-        next_value = self.prev + self.curr  # Calculate the next Fibonacci number
-        self.prev = self.curr  # Update previous number
-        self.curr = next_value  # Update current number
-        self.count += 1  # Increment the counter
+        # Calculate the next Fibonacci number
+        next_value = self.prev + self.curr  
+        # Update previous number
+        self.prev = self.curr  
+         # Update current number
+        self.curr = next_value 
+        # Increment the counter
+        self.count += 1  
         return result
 print("Fibonacci numbers:")
 fib_iter = FibonacciIterator(50)
