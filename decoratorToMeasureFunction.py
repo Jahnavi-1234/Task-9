@@ -1,46 +1,53 @@
 import time
 
-# Function to measure execution time
+# Step 1: Define the decorator to measure execution time
 def measure_time(func):
-    # Start the timer
-    start_time = time.time() 
-    # Call the function 
-    func()  
-    end_time = time.time()  
-    print(f"Time taken by {func.__name__}: {end_time - start_time:.6f} seconds")
+    def wrapper(*args, **kwargs):
+        # start the timer
+        start_time = time.time()  
+        # Call the original function
+        result = func(*args, **kwargs)  
+        end_time = time.time()  
+        print(f"Time taken by {func.__name__}: {end_time - start_time:.6f} seconds")
+        return result
+    return wrapper
 
-# Function 1: Generate list using range
+# Step 2: Apply the decorator to each function
+
+@measure_time
 def measure_with_range():
-    # Using range to generate a list
+    # Generate list using range
     my_list = list(range(100000))  
     return my_list
 
-# Function 2: Generate list using list comprehension
+@measure_time
 def measure_with_comprehension():
-    # Using list comprehension
+    # Generate list using list comprehension
     my_list = [i for i in range(100000)]  
     return my_list
 
-# Function 3: Generate list using append
+@measure_time
 def measure_with_append():
-    # Empty list
+    # Generate list using append
     my_list = []  
-    # Loop to append values
-    for i in range(100000):  
+    for i in range(100000):
         my_list.append(i)
     return my_list
 
-# Function 4: Generate list using concatenation
+@measure_time
 def measure_with_concatenation():
-    list = [] 
-    # Loop to concatenate values
+    # Generate list using concatenation
+    my_list = []  
+    # Reduced to 10000 to avoid long execution time
     for i in range(10000):  
-        list = list + [i]
-    return list
+        my_list = my_list + [i]
+    return my_list
 
-# Measure the time for each function
-measure_time(measure_with_range)
-measure_time(measure_with_comprehension)
-measure_time(measure_with_append)
-measure_time(measure_with_concatenation)
+# Step 3: Call the functions
+measure_with_range()
+measure_with_comprehension()
+measure_with_append()
+measure_with_concatenation()
+
+ 
 

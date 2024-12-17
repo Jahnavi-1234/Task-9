@@ -1,12 +1,11 @@
 # Function to generate Fibonacci sequence up to n terms
-def fibonacci(n):
+def fibonacci_generator(n):
+    # Initialize the first two Fibonacci numbers
     a, b = 0, 1  
-    for i in range(n):  
-        # Print current value of a
-        print(a, end=" ")  
-        # Update a and b to the next values
+    for i in range(n):
+        # Yield the current Fibonacci number
+        yield a  
+        # Update a and b for the next Fibonacci number
         a, b = b, a + b  
-
-n = int(input("Enter the number of terms in the Fibonacci sequence: "))  
-# Call the function to print the Fibonacci sequence
-fibonacci(n)  
+for number in fibonacci_generator(100):  
+    print(number, end=" ")
