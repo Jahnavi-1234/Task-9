@@ -26,8 +26,9 @@ class FibonacciIterator:
         # Increment the counter
         self.count += 1  
         return result
+max_count= int(input("Enter the number of fibanocci terms you want: "))
 print("Fibonacci numbers:")
-fib_iter = FibonacciIterator(50)
+fib_iter = FibonacciIterator(max_count)
 for num in fib_iter:
     print(num, end=" ")
 
